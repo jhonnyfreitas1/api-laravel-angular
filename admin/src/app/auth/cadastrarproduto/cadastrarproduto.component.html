@@ -1,0 +1,43 @@
+<div class="content-wrapper">
+
+  <section class="content-header">
+    <a href="/admin/dashboard1">
+      <i class="fa fa-dashboard">Dashboard</i>
+    </a>
+    <h2 class="text-dark">Cadastre produtos</h2>
+  </section>
+  <div class="alert alert-sucesso" role="alert" *ngIf="sucess">
+    Cadastrado com sucesso
+  </div>
+  <div class="row content">
+    <div class="col-sm-9 col-md-12 col-lg-6 my-5 mx-auto">
+      <div class="card card-signin">
+        <div class="card-body  col-md-12 col-lg-12">
+          <form method="post" action="#" [formGroup]="form">
+            <div class="form-label-group">
+              <label for="nome" class="text-center">Nome do produto</label>
+              <input type="text" formControlName="nome" class="form-control" name="nome"
+                [ngClass]="{'has-success': form.controls['nome'].required}" placeholder="Ex: jose da silva" required>
+            </div>
+            <div class="form-label-group ">
+              <div class="form-label-group ">
+                <label for="inputMatricula" class="text-center">Identificador</label>
+                <input type="text" class="form-control" formControlName="id" name="id"
+                  [ngClass]="{'has-success': form.controls['id'].required}" placeholder="Ex: Santa Cruz" required>
+              </div>
+            </div>
+            <div class="form-label-group ">
+              <div class="form-label-group ">
+                <label for="inputMatricula" class="text-center">Descrição</label>
+                <input type="text" class="form-control" name="descricao" formControlName="descricao"
+                  placeholder="Ex: Santa Cruz" required>
+              </div>
+            </div>
+            <button class="btn btn-lg btn-info btn-block text-uppercase " type="submit" (click)="onSubmit()">
+              Cadastrar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,53 @@
+<div class="content-wrapper">
+
+  <section class="content-header">
+    <a href="/admin/dashboard1">
+      <i class="fa fa-dashboard">Dashboard</i>
+    </a>
+
+    <h2 class="text-dark">Cadastre um cliente</h2>
+
+  </section>
+
+  <div class="row content">
+    <div class="col-sm-9 col-md-12 col-lg-6 my-5 mx-auto">
+      <div class="card card-signin" style="box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);">
+
+        <div class="card-body  col-md-12 col-lg-12">
+
+          <form method="post" [formGroup]="form">
+
+            <div class="form-label-group">
+              <label for="nome" class="text-center">Nome </label>
+              <input type="text" class=" form-control" formControlName="nome" name="nome" placeholder="Ex: jose da silva">
+            </div>
+            <div class="form-label-group ">
+              <div class="form-label-group ">
+                <label for="inputMatricula" class="text-center">Cidade</label>
+                <input type="text" class=" form-control " formControlName="cidade" name="cidade" placeholder="Ex: Santa Cruz">
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-label-group ml-3 mt-3 col-md-6 ">
+                <label class="text-center " for="user_telefone">Tipo de pessoa</label><br>
+                <input type="radio" class="" formControlName="tipo_pessoa" name="tipo_pessoa" value="fisica">Fisica
+                <input type="radio" class="ml-4" name="tipo_pessoa" formControlName="tipo_pessoa" value="juridica">Juridica
+              </div>
+            </div>
+            <div class="form-label-group ">
+              <label class="text-center" for="email">E-mail</label>
+              <input type="text" class="form-control" formControlName="email" name="email" placeholder="Ex: saojoao@saojoao.com">
+
+              <label class="text-center"  for="senha">Senha</label>
+              <input type="password" formControlName="senha" class="form-control" id="senha" name="senha">
+            </div>
+            <button class="btn btn-lg btn-warning btn-block text-uppercase " type="submit" (click)="onSubmit()">
+              Cadastrar
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
