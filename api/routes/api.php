@@ -21,6 +21,10 @@ Route::post('auth/login', 'api\AuthController@login');
 
 Route::post('auth/refresh', 'api\AuthController@refresh');
 
+Route::post('/cadastrar/produto', 'api\AuthController@create_produto');
+
+Route::post('/cadastrar/cliente', 'api\AuthController@create_cliente');
+
 Route::get('auth/logout', 'api\AuthController@logout');
 
 

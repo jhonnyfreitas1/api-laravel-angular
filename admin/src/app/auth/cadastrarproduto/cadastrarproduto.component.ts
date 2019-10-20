@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class CadastrarprodutoComponent implements OnInit {
   form: FormGroup;
   errorCredentials: boolean;
+  sucesso: boolean;
+  ja_existe:boolean;
   constructor(private formBuilder:FormBuilder , private authService: AuthService, private router:Router) { }
 
   ngOnInit() {
@@ -22,15 +24,29 @@ export class CadastrarprodutoComponent implements OnInit {
     });
   }
 
-  onSubmit(){
+  onSubmit(e){
+    e.preventDefault();
     this.authService.enviarForm(this.form.value).subscribe(
       (resp) => {
-          this.router.navigate(['admin']);
-      },
+        console.log(resp);
+        this.router.navigate(['admin/cadastrar/produto']);
+          if(resp[0] == "create"){
+            this.sucesso = true;
+            this.errorCredentials= false;
+            this.ja_existe= false;
+          }
+        },
       (errorResponse:HttpErrorResponse) => {
-        console.log(errorResponse)
-        if(errorResponse.status === 401){
-          this.errorCredentials = true;
+        if(errorResponse.status == 412){
+            this.errorCredentials = true;
+            this.sucesso = false;
+            this.ja_existe = false;
+
+        }
+        if(errorResponse.status == 411){
+          this.ja_existe = true;
+          this.errorCredentials = false;
+          this.sucesso = false;
 
         }
       }

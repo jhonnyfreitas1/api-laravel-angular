@@ -13,9 +13,17 @@ class UserSeed extends Seeder
     {
 
         factory(App\User::class)->create([
-            'name' => 'jhonny',
+            'name' => 'jhonny de farias',
             'email' => 'admin@gmail.com',
-            'password' => Hash::make("secret")
+            'password' => Hash::make("secret"),
+            'admin' => true
+        ]);
+
+        factory(App\User::class)->create([
+            'name' => 'cliente 1',
+            'email' => 'cliente@gmail.com',
+            'password' => Hash::make("secret"),
+            'admin' => false
         ]);
     }
 }

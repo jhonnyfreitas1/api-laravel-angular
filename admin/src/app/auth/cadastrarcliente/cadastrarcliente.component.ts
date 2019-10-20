@@ -12,6 +12,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class CadastrarclienteComponent implements OnInit {
   form: FormGroup;
   errorCredentials: boolean;
+  sucesso: boolean;
+  ja_existe:boolean;
 
   constructor(private formBuilder:FormBuilder , private authService: AuthService, private router:Router) { }
 
@@ -24,16 +26,28 @@ export class CadastrarclienteComponent implements OnInit {
       senha:[null,[Validators.required]]
 });
   }
-  onSubmit(){
+  onSubmit(e){
+    e.preventDefault();
     this.authService.enviarForm2(this.form.value).subscribe(
       (resp) => {
-          this.router.navigate(['admin']);
-      },
-      (errorResponse:HttpErrorResponse) => {
-        console.log(errorResponse)
-        if(errorResponse.status === 401){
-          this.errorCredentials = true;
+          this.router.navigate(['admin/cadastrar/cliente']);
 
+          if(resp[0] == "create"){
+            this.sucesso = true;
+            this.errorCredentials= false;
+            this.ja_existe= false;
+          }
+        },
+      (errorResponse:HttpErrorResponse) => {
+        if(errorResponse.status == 412){
+          this.errorCredentials = true;
+          this.sucesso = false;
+          this.ja_existe = false;
+        }
+        if(errorResponse.status == 411){
+          this.ja_existe = true;
+          this.errorCredentials = false;
+          this.sucesso = false;
         }
       }
   );

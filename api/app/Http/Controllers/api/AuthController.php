@@ -5,7 +5,9 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
-
+use App\User;
+use Validator;
+use App\Produto;
 class AuthController extends Controller
 {
     private $jwtAuth;
@@ -16,16 +18,17 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        // grab credentials from the request
-        $credentials = $request->only('email', 'password');
+
+
+        $credentials = $request->only('email', 'password','admin');
 
         try {
-            // attempt to verify the credentials and create a token for the user
+
             if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 401);
             }
         } catch (JWTException $e) {
-            // something went wrong whilst attempting to encode the token
+
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
@@ -52,5 +55,59 @@ class AuthController extends Controller
         $token = (string) JWTAuth::getToken();
         JWTAuth::invalidate($token);
         return response()->json(['logout']);
+    }
+
+    public function create_produto(Request $request){
+
+        if(Produto::where('id',$request->id)->first()){
+            return response()->json(['Erros', 'ja_existe'], 411);
+        }
+
+        $validatedData = Validator::make($request->all(), [
+            'nome' => 'required|max:255',
+            'descricao' => 'required|max:255',
+            'id' => 'required|unique:users'
+        ]);
+        if ($validatedData->fails()) {
+            return response()->json(['Erros', $validatedData ], 412);
+        }
+
+        $user = $request->nome;
+        $produto = new Produto;
+        $produto->nome = $request->nome;
+        $produto->id = $request->id;
+        $produto->descricao = $request->descricao;
+        $resultado = $produto->save();
+
+
+        if($resultado){
+            return response()->json(['create', $resultado], 200);
+        }
+        return response()->json(['erro', "algo deu errado"], 401);
+    }
+
+
+    public function create_cliente(Request $req){
+
+        if(User::where('email',$req->email)->first()){
+            return response()->json(['Erros', 'ja_existe'], 411);
+        }
+        if($req->email)
+        $validatedData = Validator::make($req->all(), [
+            'nome' => 'required|max:255',
+            'email' => 'required|unique:users|max:255',
+            'senha' => 'required'
+        ]);
+        if ($validatedData->fails()) {
+            return response()->json(['Erros', $validatedData ], 412);
+        }
+        $user = $req->nome;
+        $model = new User;
+        $model->name = $req->nome;
+        $model->email= $req->email;
+        $model->password = $req->senha;
+        $resultado = $model->save();
+
+        return response()->json(['create', $resultado], 200);
     }
 }
