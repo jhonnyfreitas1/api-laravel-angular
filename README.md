@@ -1,5 +1,5 @@
-# Api-laravel-angular
-Api/Sistema em Laravel + JWT + Angular + AdminLTE (banco de dados Mysql) & Babylonjs
+# Api-laravel-angular :alien: :star:	
+Api/Sistema em Laravel + JWT + Angular + AdminLTE (banco de dados Mysql) & Babylonjs :star:	:star:	
 
 
 ## Instalação: 
@@ -8,20 +8,23 @@ com a linha de comando na raiz do projeto execute o comando: <b>make conf</b>
 esse comando instalará todos as ferramentas basicas para o projeto como mysql, php, extençoes, etc
 após isso separadamente em cada projeto faça as etapas abaixo. 
 
-dentro do projeto api(laravel) no Linux. Execute:
+Dentro do projeto api(laravel) no Linux. Execute:
+  ```shell
   composer install --no-scripts
 	cp .env.example .env
 	php artisan key:generate
-  php artisan migrate:refresh --seed <!-- (Adicionará um usuario Administrador <b>Email: admin@gmail.com senha:secret</b>)-->
-
+ 	php artisan migrate:refresh --seed
+ ```
+(Adicionará um usuario Administrador <b>Email: admin@gmail.com 	senha:secret</b>)
 
 dentro do projeto admin(angular) no Linux. Execute:
-  curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+```shell
+ 	curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 	sudo apt-get install nodejs
 	npm install -g @angular/cli
-
-Se quiser você pode seguir sem o auxilio desse tuturial ou do makeconf, se for windows seu sistema operacional, você terá que configurar tudo manualmente.
-OBS: Importante Lembrar que é necessário configurar corretamente o banco de dados no .env do projeto laravel.
+```
+Se quiser você pode seguir sem o auxilio desse tuturial ou do makeconf, se for windows seu sistema operacional, você terá que configurar tudo manualmente<br>.
+:exclamation:: Importante Lembrar que é necessário configurar corretamente o banco de dados no .env do projeto laravel.
 
 ## Sobre
 Api em laravel, com autenticação e autorização com JWT, dados do JWT são persistidos no localestorage para serem usadas
