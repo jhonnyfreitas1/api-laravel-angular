@@ -30,7 +30,10 @@ Se quiser você pode seguir sem o auxilio desse tuturial ou do makeconf, se for 
 Api em laravel, com autenticação e autorização com JWT, dados do JWT são persistidos no localestorage para serem usadas
 no cabeçalho das requisições da aplicação em angular.
 O projeto todo não esta completamente perfeito, falta alguns validadores e ajustes.
+há na api do laravel uma classe implementada para resolver o erro de cors que acontece na requisição do angular para api, então provavelmente já funcionará.
 
+
+<b>Na api laravel, foi feito dois tipos de login web e api(jwt) um problema pode acontecer, o token de autenticação ele tem 80 minutos para expirar, na api do laravel a um methodo de refresh token, porém não foi implementado junto a aplicação do angular, então após esse tempo de uso você terá acesso a aplicação front-end em angular mas o acesso a api você não terá autorização, então façao seguinte: abra o inspecionar(f12)>aplication>localestorage e apague os dados do localstorage, faça login novamente para ter acesso, essa parte não foi implementada porque em 80 minutos é o suficiente para verificar as aplicações</b>
 
 Basicamente, o administrador faz login para poder adicionar clientes e produtos.
 
