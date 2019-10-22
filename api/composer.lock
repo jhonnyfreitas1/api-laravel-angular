@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a3daf20e254782299f7500316161b65",
+    "content-hash": "935223c57eef9698a9a3fde8ac831d5b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -493,6 +493,43 @@
                 "trusted proxy"
             ],
             "time": "2019-09-03T16:45:42+00:00"
+        },
+        {
+            "name": "froiden/sql-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Froiden/sql-generator.git",
+                "reference": "03d517276c8d1f5127d578b9986b7b4ba9f20e6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Froiden/sql-generator/zipball/03d517276c8d1f5127d578b9986b7b4ba9f20e6f",
+                "reference": "03d517276c8d1f5127d578b9986b7b4ba9f20e6f",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">= 5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Froiden\\SqlGenerator\\": "src",
+                    "Froiden\\SqlGenerator\\Tests\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jayant Soni",
+                    "email": "jayant@froiden.com"
+                }
+            ],
+            "description": "convert Laravel migrations to raw SQL scripts",
+            "time": "2018-06-26T08:11:09+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -5295,6 +5332,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "froiden/sql-generator": 20,
         "tymon/jwt-auth": 20
     },
     "prefer-stable": true,
