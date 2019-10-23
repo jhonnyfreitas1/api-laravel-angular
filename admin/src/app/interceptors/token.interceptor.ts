@@ -16,7 +16,7 @@ export class TokenInterceptor implements HttpInterceptor {
       const apiUrl:Array<any> = environment.api_url.split("/");
       const token = localStorage.getItem('token');
 
-      if(token && requestUrl[2] === apiUrl[2]){
+      if(token){
         const newRequest =  request.clone({
           setHeaders:{'Authorization':`Bearer ${token}`}
         });
