@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_URI} !^public
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+# DO NOT REMOVE THIS LINE AND THE LINES BELOW SSL_REDIRECT:localhost/aula
+RewriteEngine on
+RewriteCond %{HTTPS} off
+
+RewriteCond %{HTTP_HOST} ^localhost/aula$
+RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# DO NOT REMOVE THIS LINE AND THE LINES ABOVE SSL_REDIRECT:localhost/aula
