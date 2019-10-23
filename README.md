@@ -14,6 +14,7 @@ Dentro do projeto api(laravel) no Linux. Execute:
 	cp .env.example .env
 	php artisan key:generate
  	php artisan migrate:refresh --seed
+	php artisan serve :: vai startar um servidor na porta 8000
  ```
 (Adicionará um usuario Administrador <b>Email: admin@gmail.com 	senha:secret</b>)
 
@@ -22,7 +23,8 @@ dentro do projeto admin(angular) no Linux. Execute:
  	curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 	sudo apt-get install nodejs
 	npm install -g @angular/cli
-```
+	ng serve :: vai startar um servidor na porta 4200 
+```	
 Se quiser você pode seguir sem o auxilio desse tuturial ou do makeconf, se for windows seu sistema operacional, você terá que configurar tudo manualmente<br>.
 :exclamation:: Importante Lembrar que é necessário configurar corretamente o banco de dados no .env do projeto laravel.
 
